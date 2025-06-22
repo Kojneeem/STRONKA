@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TEST</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    .tabs {
+      display: flex;
+      background: #1e1e1e;
+      padding: 10px 20px;
+      border-bottom: 1px solid #333;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      margin-right: 15px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ccc;
+    }
+
+    .tab:hover,
+    .tab.active {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .content {
+      padding: 30px;
+      display: none;
+      animation: fade 0.3s ease-in-out;
+    }
+
+    .content.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .tabs {
+        flex-direction: column;
+      }
+
+      .tab {
+        margin-bottom: 10px;
+      }
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    a {
+      color: #8ab4f8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="home"><i class="fas fa-home"></i>Strona Główna</div>
+    <div class="tab" data-tab="about"><i class="fas fa-info-circle"></i>O Nas</div>
+    <div class="tab" data-tab="contact"><i class="fas fa-envelope"></i>Kontakt</div>
+    <div class="tab" data-tab="login"><i class="fas fa-sign-in-alt"></i>Logowanie</div>
+  </div>
+
+  <div class="content active" id="home">
+    <h1>🏠 Strona Główna</h1>
+    <p>Witamy na nowoczesnej stronie z zakładkami. Przełączaj się płynnie pomiędzy sekcjami.</p>
+  </div>
+
+  <div class="content" id="about">
+    <h1>ℹ️ O Nas</h1>
+    <p>Tworzymy strony i aplikacje w stylu nowoczesnego dark UI.</p>
+  </div>
+
+  <div class="content" id="contact">
+    <h1>✉️ Kontakt</h1>
+    <p>Skontaktuj się z nami przez e-mail: <a href="mailto:kontakt@example.com">kontakt@example.com</a></p>
+  </div>
+
+  <div class="content" id="login">
+    <h1>🔐 Logowanie</h1>
+    <p>Panel logowania w budowie... Dodaj backend lub formularz tutaj.</p>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        contents.forEach(c => c.classList.remove('active'));
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+  <script src="fjut.js"></script>
+</body>
+</html>
